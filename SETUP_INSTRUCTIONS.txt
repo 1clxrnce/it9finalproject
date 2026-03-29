@@ -1,0 +1,100 @@
+COMPUTER PARTS INVENTORY - SETUP INSTRUCTIONS
+==============================================
+
+STEP 1: Start XAMPP
+-------------------
+1. Open XAMPP Control Panel
+2. Start Apache
+3. Start MySQL
+
+STEP 2: Prepare Laravel Project
+-------------------------------
+Open your terminal in this project folder and run:
+
+composer install
+
+If `.env` does not exist, run:
+
+copy .env.example .env
+
+STEP 3: Configure MySQL in .env
+-------------------------------
+Open `.env` and make sure these values are set:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=inventory_db
+DB_USERNAME=root
+DB_PASSWORD=
+
+STEP 4: Create Database
+-----------------------
+1. Open your browser and go to: http://localhost/phpmyadmin
+2. Click "New" in the left sidebar
+3. Create a new database named: inventory_db
+4. Click "Create"
+
+STEP 5: Generate App Key
+------------------------
+In the terminal, run:
+
+php artisan key:generate
+
+STEP 6: Run Laravel Migrations
+------------------------------
+In the terminal, run:
+
+php artisan migrate
+
+This will create the `computer_parts` table with these columns:
+- id
+- part_name
+- part_type
+- manufacturer
+- price
+- quantity
+- description
+- created_at
+- updated_at
+
+STEP 7: Start Laravel Development Server
+----------------------------------------
+In the terminal, run:
+
+php artisan serve
+
+STEP 8: Access the Website
+--------------------------
+Open your browser and go to: http://localhost:8000
+
+You should see the Computer Parts Inventory page.
+
+CRUD OPERATIONS AVAILABLE:
+==========================
+
+CREATE - Add New Computer Part
+- Click "Add New Computer Part" button
+- Fill in the form with part details
+- Click "Add Computer Part" to save
+
+READ - View All Parts
+- The main page displays all computer parts in a table
+- Shows: ID, Name, Type, Manufacturer, Price, Quantity, Description
+
+UPDATE - Edit Existing Part
+- Click "Edit" link next to any part
+- Modify the details in the form
+- Click "Update Computer Part" to save changes
+
+DELETE - Remove Part
+- Click "Delete" button next to any part
+- Confirm the deletion
+- Part will be removed from inventory
+
+TROUBLESHOOTING:
+================
+- If you get database connection errors, make sure XAMPP MySQL is running
+- If migrations fail, check that the database `inventory_db` exists in phpMyAdmin
+- If Artisan fails with missing `vendor/autoload.php`, run `composer install`
+- If Laravel says no encryption key, run `php artisan key:generate`
