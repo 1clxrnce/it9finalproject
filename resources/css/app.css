@@ -1,0 +1,722 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+    color: #333;
+    font-weight: 400;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #1a1a1a;
+    padding: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.navbar-menu li {
+    margin: 0;
+    position: relative;
+}
+
+.navbar-menu a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 16px 32px;
+    display: block;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.navbar-menu a:hover {
+    background-color: #2a2a2a;
+    color: #ff4444;
+}
+
+.navbar-menu a.active {
+    background-color: #2a2a2a;
+    border-bottom: 3px solid #ff4444;
+    color: #ff4444;
+}
+
+/* User Dropdown */
+.navbar-user-dropdown {
+    position: relative;
+}
+
+.navbar-user-toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    min-width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.navbar-user-dropdown:hover .navbar-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.navbar-dropdown-header {
+    padding: 16px 20px;
+    background: #f5f5f5;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.navbar-dropdown-header strong {
+    display: block;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.navbar-dropdown-header span {
+    display: block;
+    color: #666;
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+/* Role Badges */
+.role-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 6px;
+}
+
+.role-badge-admin {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+}
+
+.role-badge-inventory_staff {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+}
+
+.navbar-dropdown-item {
+    width: 100%;
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    text-align: left;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-dropdown-item:hover {
+    background: #f5f5f5;
+    color: #ff4444;
+}
+
+.navbar-dropdown-item svg {
+    flex-shrink: 0;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Page Header */
+.page-header {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.page-header h1 {
+    color: #333;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+/* Alert Messages */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 4px solid #28a745;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Content Box */
+.content-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    background: white;
+    color: #2c3e50;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #34495e;
+}
+
+/* Button Styles - Clean Minimalist */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s ease;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.btn-primary {
+    background-color: #34495e;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2c3e50;
+}
+
+.btn-success {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #27ae60;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+.btn-secondary {
+    background-color: #ecf0f1;
+    color: #34495e;
+}
+
+.btn-secondary:hover {
+    background-color: #bdc3c7;
+}
+
+.btn-large {
+    padding: 12px 28px;
+    font-size: 14px;
+}
+
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Table Styles */
+.table-container {
+    overflow-x: auto;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+table th {
+    background-color: #2c3e50;
+    color: white;
+    padding: 16px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #1a252f;
+    border-right: 1px solid #3d5266;
+}
+
+table th:last-child {
+    border-right: none;
+}
+
+table td {
+    padding: 16px;
+    border-bottom: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+table td:last-child {
+    border-right: none;
+}
+
+table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.table-actions .btn {
+    padding: 6px 14px;
+    font-size: 12px;
+    border-radius: 3px;
+}
+
+.table-actions form {
+    margin: 0;
+    display: inline;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+    margin-top: 50px;
+}
+
+/* Home Page Styles */
+.hero-section {
+    background-color: white;
+    text-align: center;
+    padding: 60px 30px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.hero-section h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 500;
+}
+
+.hero-section p {
+    font-size: 15px;
+    margin-bottom: 22px;
+    color: #666;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-large {
+    padding: 14px 32px;
+    font-size: 14px;
+}
+
+.home-hero {
+    border: 1px solid #e6e9ee;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.stat-card {
+    background-color: white;
+    border: 1px solid #e6e9ee;
+    border-radius: 5px;
+    padding: 18px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.stat-value {
+    font-size: 26px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+@media (max-width: 900px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Auth Form Styles */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.form-actions .btn {
+    flex: 1;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 5px;
+    display: block;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto;
+    cursor: pointer;
+}
+
+
+/* Split Screen Auth Pages */
+.split-auth-body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    overflow: hidden;
+}
+
+.split-auth-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Left Side - Form */
+.split-auth-left {
+    flex: 1;
+    background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    position: relative;
+}
+
+.split-auth-form-wrapper {
+    width: 100%;
+    max-width: 400px;
+}
+
+.split-auth-title {
+    color: white;
+    font-size: 48px;
+    font-weight: 300;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.split-auth-form {
+    width: 100%;
+}
+
+.split-input-group {
+    margin-bottom: 20px;
+}
+
+.split-input-group input {
+    width: 100%;
+    padding: 12px 16px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #2c3e50;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.split-input-group input:focus {
+    outline: none;
+    border-color: #34495e;
+}
+
+.split-input-group input::placeholder {
+    color: #95a5a6;
+}
+
+.split-error {
+    display: block;
+    color: #ff6b6b;
+    font-size: 13px;
+    margin-top: 8px;
+    margin-left: 20px;
+}
+
+.split-submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #34495e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 30px;
+}
+
+.split-submit-btn:hover {
+    background: #2c3e50;
+}
+
+.split-submit-btn:active {
+    transform: scale(0.98);
+}
+
+.split-footer-text {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.split-footer-text p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+}
+
+.split-footer-text a {
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+}
+
+.split-footer-text a:hover {
+    border-bottom-color: white;
+}
+
+/* Right Side - Image */
+.split-auth-right {
+    flex: 1;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.split-auth-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Optional overlay for text on image */
+.split-image-overlay {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.split-image-overlay h2 {
+    font-size: 72px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.split-image-overlay p {
+    font-size: 20px;
+    color: #7f8c8d;
+    font-weight: 300;
+}
+
+/* Remove overlay styles if you want just the image without text */
+/* Comment out or delete .split-image-overlay styles above and 
+   remove the <div class="split-image-overlay"> from the HTML */
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .split-auth-container {
+        flex-direction: column;
+    }
+    
+    .split-auth-left {
+        min-height: 60vh;
+    }
+    
+    .split-auth-right {
+        min-height: 40vh;
+    }
+    
+    .split-welcome-content h2 {
+        font-size: 48px;
+    }
+    
+    .split-welcome-content p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .split-auth-left {
+        padding: 30px 20px;
+    }
+    
+    .split-auth-title {
+        font-size: 36px;
+    }
+    
+    .split-welcome-content h2 {
+        font-size: 36px;
+    }
+}
